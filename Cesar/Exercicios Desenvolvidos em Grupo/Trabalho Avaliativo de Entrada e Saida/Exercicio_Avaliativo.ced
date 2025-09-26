@@ -1,0 +1,59 @@
+ORG 0
+; --- Configura Registradores e Constantes ---
+MOV #65498, R3      ; R3 = Endereço do Status do Teclado (Controle) 
+MOV #65500, R1      ; R1 = Endereço do Display (Ponteiro de escrita) 
+MOV #46, R0         ; R0 = Constante ASCII do Ponto ('.')
+MOV #62, R4         ; R4 = Constante ASCII do Prompt ('>')
+MOV #83, R5         ; R5 = Constante ASCII de 'S'
+MOV #78, R6         ; R6 = Constante ASCII de 'N'
+
+DIGITA_NOME_RA:
+    CLR (R3)            ; Limpa o status para a leitura
+
+AGUARDA_TECLA:
+    TST (R3)
+    BEQ AGUARDA_TECLA   ; Continua esperando
+
+    MOV 65499, R2       ; Lê o caractere para R2
+
+    CMP R0, R2          ; Compara R2 com o Ponto (R0)
+    BEQ FIM_DIGITACAO   ; Se for um ponto, sai do loop
+
+   ; --- TRATA ESTOURO DO VISOR ---
+    MOV R2, (R1)        ; Move o caractere de R2 para o display
+    INC R1              ; Incrementa o ponteiro do display
+
+    ; VERIFICA SE O PONTEIRO DO DISPLAY (R1) DEU A VOLTA (DE 65535 PARA 0)
+    TST R1              ; Testa se o valor em R1 é zero
+    BNE CONTINUA_LOOP   ; Se NÃO for zero (BNE = Branch if Not Equal), o display não encheu. Pula a próxima linha.
+    MOV #65500, R1      ; Se FOR zero, o display encheu. Reseta R1 para o endereço inicial do display.
+
+CONTINUA_LOOP:
+    BR DIGITA_NOME_RA   ; Volta para ler a próxima tecla
+
+FIM_DIGITACAO:
+    ; --- Exibe o prompt ">" ---
+    MOV R4, (R1)    ; Move o prompt '>' para a proxima posicao do display
+    INC R1          ; Prepara R1 para o proximo caractere
+
+    ; --- ROTINA DE VALIDAÇÃO S/N ---
+VALIDACAO_SN_LOOP:
+    CLR (R3)        ; Limpa o status antes de esperar a proxima tecla
+
+TECLA_SN:
+    TST (R3)        ; Espera pela resposta 'S' ou 'N'
+    BEQ TECLA_SN ; Continua o loop
+
+    MOV 65499, R2   ; Le o caractere (65499) para R2
+
+    CMP R5, R2      ; Compara R2 com 'S' (R5)
+    BEQ EXIBE_FIM   ; Se for 'S', exibe e encerra
+
+    CMP R6, R2      ; Compara R2 com 'N' (R6)
+    BEQ EXIBE_FIM   ; Se for 'N', exibe e encerra
+
+    BR VALIDACAO_SN_LOOP ; Se nao for S/N, volta para limpar e aguardar a proxima tecla
+
+EXIBE_FIM:
+    MOV R2, (R1)    ; Move o caractere 'S' ou 'N' para o display
+    HLT             ; Encerra o programa

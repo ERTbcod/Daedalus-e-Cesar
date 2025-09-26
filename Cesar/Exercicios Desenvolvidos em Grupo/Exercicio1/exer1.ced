@@ -1,0 +1,56 @@
+ORG 1028	;Parametro de busca
+DW 101
+
+ORG 1024	;Tamanho do Vetor
+DW 26
+
+ORG 1026	;Posição inicial do vetor
+DW 900
+
+ORG 900		;Vetor com seus valores
+DW 97           ; a
+DW 98           ; b
+DW 99           ; c
+DW 100          ; d
+DW 101          ; e
+DW 102          ; f
+DW 103          ; g
+DW 104          ; h
+DW 105          ; i
+DW 106          ; j
+DW 107          ; k
+DW 108          ; l
+DW 109          ; m
+DW 110          ; n
+DW 111          ; o
+DW 112          ; p
+DW 113          ; q
+DW 114          ; r
+DW 115          ; s
+DW 116          ; t
+DW 117          ; u
+DW 118          ; v
+DW 119          ; w
+DW 120          ; x
+DW 121          ; y
+DW 122          ; z
+
+ORG 0
+MOV 1024, R0        ; Tamanho do vetor (em palavras)
+MOV 1026, R1        ; Endereço inicial do vetor
+MOV 1028, R2       ; Carrega o valor de entrada (valor a ser procurado) em R2
+MOV 1030, R3        ; Inicializa o índice de busca em R3 (começa de 0)
+
+LOOP_COMPARA:
+    CMP (R1), R2    ; Compara o valor no vetor (R1) com o valor de entrada (R2)
+    BEQ ENCONTROU   ; Se forem iguais, desvia para o rótulo ENCONTROU
+    ADD #2, R1      ; Avança para o próximo elemento do vetor
+    INC R3          ; Incrementa o índice de busca
+    DEC R0          ; Decrementa o contador de elementos restantes
+    BNE LOOP_COMPARA ; Se ainda houver elementos, continua o loop
+
+    HLT             ; Se não encontrar o valor, termina o programa (não encontrado)
+
+ENCONTROU:
+    MOV R0, 1030     ; Se encontrou o valor, move o índice (R3) para a posição de saída
+    HLT              ; Finaliza o programa

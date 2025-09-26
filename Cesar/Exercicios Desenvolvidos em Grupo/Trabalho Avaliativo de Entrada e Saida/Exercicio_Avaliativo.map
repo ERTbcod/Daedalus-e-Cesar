@@ -1,0 +1,9 @@
+Símbolo         Valor Decimal   Valor Hexadecimal
+-------         -------------   -----------------
+DIGITA_NOME_RA             24                  18
+AGUARDA_TECLA              26                  1A
+CONTINUA_LOOP              50                  32
+FIM_DIGITACAO              52                  34
+VALIDACAO_SN_LOOP          56                  38
+TECLA_SN                   58                  3A
+EXIBE_FIM                  76                  4C

@@ -1,0 +1,17 @@
+ORG 1024
+tamanho: DW 3       ; Tamanho do vetor (5 posicoes)
+endereco: DW 1034   ; Endereco inicial do vetor
+valor: DW 74        ; Valor a ser movido para o vetor
+
+ORG 0
+MOV tamanho, R1     ; R1 = contador do loop (5)
+MOV endereco, R2    ; R2 = ponteiro para o vetor (1030)
+MOV valor, R0       ; R0 = o valor a ser movido (74)
+
+LOOP_INICIALIZA:
+    MOV R0, (R2)+   ; Move o valor de R0 para o endereco de R2
+                    ; e incrementa R2 por 2 para a proxima palavra 
+    DEC R1          ; Decrementa o contador 
+    BNE LOOP_INICIALIZA ; Se R1 nao for zero, volta para o inicio do loop 
+
+HLT                 ; Finaliza o programa 
