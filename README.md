@@ -1,7 +1,15 @@
-# 💻 Sistemas Computacionais I - Exercícios do Computador CESAR
+# 💻 Trabalho da Disciplina Sistemas Computacionais I - Exercícios do Computador CESAR
+**Curso:** Engenharia de Controle e Automação 
 
+## Integrantes
+- Erick Rodrigues Tavares  
+- Gabriel Alonso de Castro  
+- Otávio Augusto de Souza Silva
+
+## Descrição
 Este repositório contém as soluções e relatórios desenvolvidos para a disciplina de **Sistemas Computacionais I**. Os programas são escritos em **Assembly** para o **Computador Hipotético CESAR**, utilizando o montador **Daedalus**.
 
+## Objetivo
 O objetivo desta atividade foi compreender a arquitetura de 16 bits, o modelo de registradores, os modos de endereçamento e o processo de Input/Output (I/O) mapeado na memória.
 
 ---
