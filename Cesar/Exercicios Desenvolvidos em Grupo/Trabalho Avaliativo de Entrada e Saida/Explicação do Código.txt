@@ -1,0 +1,1 @@
+Neste exercicio o usuário entra digitando seu nome e RA, após isso ele deve digitar "." para o programa esperar uma resposta ("S" ou "N"), enquanto não for uma dessas opções o display não é acionado, quando o programa reconhece um dos dois valores, mostra no display e encerra o programa.
