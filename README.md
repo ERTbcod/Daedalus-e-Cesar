@@ -6,7 +6,7 @@ O objetivo desta atividade foi compreender a arquitetura de 16 bits, o modelo de
 
 ---
 
-## 🚀 Arquitetura e Ferramentas
+## 🔧 Arquitetura e Ferramentas
 
 | Componente | Detalhe |
 | :--- | :--- |
