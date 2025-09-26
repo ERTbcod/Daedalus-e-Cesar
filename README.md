@@ -27,3 +27,5 @@ O objetivo desta atividade foi compreender a arquitetura de 16 bits, o modelo de
 ---
 ## Link de acesso direto para o Relatório (Google Documentos)
 https://docs.google.com/document/d/17Tm7Weith3UF0iC3FEbKHOGl0xPjWLmKrsjN68zYwH0/edit?usp=sharing
+## PDF do Relatório
+[Tarefa Daedalus e Cesar.pdf](https://github.com/user-attachments/files/22560371/Tarefa.Daedalus.e.Cesar.pdf)
